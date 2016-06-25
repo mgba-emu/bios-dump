@@ -11,7 +11,7 @@ BIOS's builtin checksumming method, and SHA-256.
 Model #  CPU Type     Checksum  SHA-256
 AGB-001  CPU AGB A    BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
 AGS-001  CPU AGB B E  BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
-AGS-101  CPU AGB B E  [confirmed dump missing, likely same as above]
-OXY-001  CPU AGB E    [confirmed dump missing, likely same as above]
+AGS-101  CPU AGB B E  BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
+OXY-001  CPU AGB E    BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
 NTR-001  CPU NTR      BAAE1880  782eb3894237ec6aa411b78ffee19078bacf10413856d33cda10b44fd9c2856b
 USG-001  CPU NTR B    BAAE1880  782eb3894237ec6aa411b78ffee19078bacf10413856d33cda10b44fd9c2856b
