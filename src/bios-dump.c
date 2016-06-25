@@ -38,6 +38,6 @@ int main() {
 		"strb r2, [r0], #1 \n"
 		"cmp r11, r10 \n"
 		"blt 0b \n"
-	: : : "r0", "r1", "r2", "r3", "r11", "r12", "memory");
+	: : : "r0", "r1", "r2", "r3", "r10", "r11", "r12", "lr", "memory");
 	printf("Done dumping!");
 }
