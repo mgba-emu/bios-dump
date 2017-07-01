@@ -4,6 +4,11 @@ This utility dumps the GBA BIOS by jumping directly into the CpuFastSet
 routine in the BIOS, bypassing the region check, and then copying the BIOS
 into a flashcart's SRAM.
 
+For demonstration purposes a black-box approach is also included that works
+without knowledge of where the CpuFastSet routine is in memory. However,
+due to timing concerns it doesn't always dump properly the first time it
+tries and runs the checksum to try again if needed.
+
 The expected output is a 16kiB file, with different checksums based on device.
 Below are the CPU models and checksums of the expected output, using both the
 BIOS's builtin checksumming method, and SHA-256.
@@ -13,5 +18,6 @@ AGB-001  CPU AGB A    BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e8
 AGS-001  CPU AGB B E  BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
 AGS-101  CPU AGB B E  BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
 OXY-001  CPU AGB E    BAAE187F  fd2547724b505f487e6dcb29ec2ecff3af35a841a77ab2e85fd87350abd36570
+DOL-017  CPU AGB A ?  ??        ??
 NTR-001  CPU NTR      BAAE1880  782eb3894237ec6aa411b78ffee19078bacf10413856d33cda10b44fd9c2856b
 USG-001  CPU NTR B    BAAE1880  782eb3894237ec6aa411b78ffee19078bacf10413856d33cda10b44fd9c2856b
