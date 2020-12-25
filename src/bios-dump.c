@@ -8,7 +8,6 @@
 char savetype[] = "SRAM_V123"; // So that save tools can figure out the format
 
 IWRAM_DATA u8 out[0x4000];
-EWRAM_DATA u32 bbSource[0x1000];
 
 void dump(void) {
 	__asm__ __volatile__(
@@ -23,6 +22,9 @@ void dump(void) {
 		"mov r0, #0xE000000 \n"
 	: : : "r0", "r1", "r2", "r3", "r10", "r11", "r12", "lr", "memory");
 }
+
+#ifdef USE_BLACKBOX
+EWRAM_DATA u32 bbSource[0x1000];
 
 int timing = 0xFF00;
 
@@ -68,6 +70,7 @@ void blackBox(void) {
 	REG_TM0CNT = 0xC00000 | timing;
 	CpuFastSet(bbSource, out, sizeof(out) / 4);
 }
+#endif
 
 int main() {
 	consoleDemoInit();
@@ -87,8 +90,9 @@ int main() {
 		checksum == 0xBAAE1880 ? "NTR" : "???");
 
 	size_t i;
+#ifdef USE_BLACKBOX
 	for (i = 0; i < 8; ++i) {
-		dump();
+		blackBox();
 
 		u32 checksum2 = 0;
 		size_t c;
@@ -104,10 +108,16 @@ int main() {
 		}
 		break;
 	}
+#else
+	dump();
+#endif
 
 	for (i = 0; i < sizeof(out); ++i) {
 		((vu8*) SRAM)[i] = out[i];
 	}
 
 	printf("Done dumping!");
+	while (1) {
+		VBlankIntrWait();
+	}
 }
