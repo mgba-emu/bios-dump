@@ -22,6 +22,7 @@ SOURCES		:=	src
 DATA		:=
 GRAPHICS	:=
 INCLUDES	:=	include
+DEFINES		:=	-DBIOS_WRITE_SRAM -DBIOS_CALC_SHA256
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -32,7 +33,7 @@ CFLAGS	:=	-g -Wall -O3\
 		-mcpu=arm7tdmi -mtune=arm7tdmi\
  		-fomit-frame-pointer\
 		-ffast-math \
-		$(ARCH)
+		$(ARCH) $(DEFINES)
 
 CFLAGS	+=	$(INCLUDE)
 
